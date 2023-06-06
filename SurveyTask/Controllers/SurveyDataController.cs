@@ -14,13 +14,7 @@ namespace SurveyTask.Controllers
         {
             _surveyService = surveyService;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var result = await _surveyService.GetDetails();
-            return Ok(result);
-        }
+        
 
         [HttpPost]
         [Route("generate-report")]

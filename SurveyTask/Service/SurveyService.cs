@@ -15,21 +15,7 @@ namespace SurveyTask.Service
         {
             _surveyContext = surveyContext;
         }
-        public async Task<List<SurveyData>> GetDetails()
-        {
-            var obj = new List<SurveyData>();
-            try
-            {
-               // var abcd = DataProvider
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            return obj;
-        }
-
-
+        
 
 
         public async Task<string> GenerateReport(ReportDto parameters)
@@ -45,9 +31,8 @@ namespace SurveyTask.Service
                             new SqlParameter("@Session", parameters.Season))
                         .ToListAsync();
 
-                //return reportData;
 
-                var filePath = "C:\\MVC\\Report\\report.csv"; // Specify the desired file path for the generated CSV file
+                var filePath = "C:\\MVC\\Report\\report.csv"; 
 
                 using (var writer = new StreamWriter(filePath))
                 using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))

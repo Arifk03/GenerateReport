@@ -32,7 +32,12 @@ namespace SurveyTask.Service
                         .ToListAsync();
 
 
-                var filePath = "C:\\MVC\\Report\\report.csv"; 
+                string uniqueIdentifier = DateTime.Now.ToString("yyyyMMddHHmmss");
+
+                string fileName = $"report_{uniqueIdentifier}.csv";
+                string directoryPath = "C:\\MVC\\Report";
+
+                var filePath = Path.Combine(directoryPath, fileName); 
 
                 using (var writer = new StreamWriter(filePath))
                 using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
@@ -46,8 +51,6 @@ namespace SurveyTask.Service
             }
             catch (Exception ex)
             {
-                 Console.WriteLine($"An error occurred while generating the report: {ex.Message}");
-
                 throw;
             }
         }
